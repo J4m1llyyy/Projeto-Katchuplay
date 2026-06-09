@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katchuplay - Editar Filme</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='editar_e_criar.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <img src="/static/logo_katchuplay_texto.png" alt="Katchuplay Texto">
+    </div>
+
+    <div class="conteudo-principal">
+        <div class="nome_pagina">
+            <h1>Editar Filme: {{ filme.titulo }}</h1>
+            <a class="voltar" href="{{ url_for('filmes_page') }}">← Voltar</a>
+        </div>
+
+        <form class="container-edicao" action="{{ url_for('editar', titulo=filme.titulo) }}" method="POST" enctype="multipart/form-data">
+            
+            <div class="coluna-imagem">
+                <h3>Capa Atual:</h3>
+                <div class="card-filme" style="--url-imagem: url('{{ filme.imagem }}?t={{ range(1, 10000) | random }}');">
+                    <div class="conteudo-card"></div>
+                    
+                    <button class="btn-remover-capa" type="submit" name="acao" value="remover" 
+                            onclick="document.getElementById('imagem_persistente').value='/static/images/default.jpg'">
+                        <i class="fa-solid fa-circle-xmark"></i> Remover Capa
+                    </button>
+                </div>
+
+                <h3>Adicionar Nova Capa:</h3>
+                <input type="file" name="imagem" accept="image/*">
+                <button class="btn-previa" type="submit" name="acao" value="previa">Salvar Nova Imagem</button>
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="titulo" placeholder="Título do Filme" value="{{ filme.titulo }}" required>
+                
+                <input type="number" name="ano" placeholder="Ex: 2024" min="1888" max="2026" value="{{ filme.ano }}" required>
+                
+                <select name="classificacao_indicativa" required>
+                    <option value="">Selecione a Classificação</option>
+                    {% for c in ["L", "10+", "12+", "14+", "16+", "18+"] %}
+                        <option value="{{ c }}" {% if filme.classificacao_indicativa == c %}selected{% endif %}>{{ c }}</option>
+                    {% endfor %}
+                </select>
+                
+                <input type="number" name="duracao" placeholder="Minutos (Ex: 120)" min="1" value="{{ filme.duracao | replace('h', '') | replace('m', '') | replace('00', '') }}">
+                
+                <select name="genero" required>
+                    <option value="">Selecione o Gênero</option>
+                    {% for g in generos | sort %}
+                        <option value="{{ g }}" {% if filme.genero == g %}selected{% endif %}>{{ g }}</option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit" name="acao" value="salvar">Salvar Alterações</button>
+
+                <a href="{{ url_for('excluir_filme', titulo=filme.titulo) }}" 
+                   class="btn-excluir" 
+                   style="display: block; margin-top: 10px; color: red; text-decoration: none;"
+                   onclick="return confirm('Tem certeza que deseja excluir este filme?')">
+                   Excluir Filme
+                </a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

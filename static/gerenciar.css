@@ -1,0 +1,123 @@
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  flex-direction: column;
+}
+html {
+/* Força a barra de rolagem vertical a ficar sempre visível (mesmo que desativada), impedindo o layout de tremer */
+overflow-y: scroll;
+}
+
+
+
+/* Navbar */
+.navbar {
+  background-color: #000;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Logo */
+.navbar img {
+  height: 50px;
+}
+
+
+
+.conteudo-principal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+}
+
+
+.voltar {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 14px;
+  background-color: #8b0000;
+  padding: 8px 12px;
+  transition: background-color 0.2s ease;
+}
+
+.voltar:hover {
+  background-color: #f40612;
+  transition: background-color 0.2s;
+}
+
+
+
+/* --- Novo CSS Alinhado --- */
+
+/* O form agora é o grid/flex principal */
+form {
+  display: flex;
+  flex-wrap: wrap; /* Quebra para baixo em telas pequenas */
+  gap: 40px;       /* Espaço entre imagem e formulário */
+  justify-content: center;
+  padding: 20px;
+  align-items: center; /* Alinha ao topo para evitar que fiquem desalinhados */
+}
+
+/* Coluna da Imagem */
+.coluna-imagem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px; /* Largura definida para manter o alinhamento */
+}
+
+.coluna-imagem img {
+  width: 200px; /* Largura fixa para manter o alinhamento */
+  height: 300px; /* Altura fixa para manter o alinhamento */
+  object-fit: cover; /* Ajusta a imagem sem distorcer */
+  border-radius: 5px;
+}
+
+/* Formulário (Direita) */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 350px; /* Largura definida para o bloco da direita */
+}
+
+/* CSS Global para TODOS os inputs e select */
+.form-group input, 
+.form-group select,
+.coluna-imagem input[type="file"] {
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  font-size: 16px;
+  box-sizing: border-box; /* OBRIGATÓRIO: mantém o tamanho consistente */
+}
+
+/* Estilo do Botão */
+.form-group button {
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #8b0000;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.form-group button:hover {
+  background-color: #f40612;
+}

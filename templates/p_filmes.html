@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katchuplay - Filmes</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='p_filmes.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <input type="radio" id="filtro-todos" name="genero" class="radio-filtro" {{ 'checked' if not genero_selecionado }}>
+    <input type="radio" id="filtro-acao" name="genero" class="radio-filtro" {{ 'checked' if genero_selecionado == 'Ação' }}>
+    <input type="radio" id="filtro-comedia" name="genero" class="radio-filtro" {{ 'checked' if genero_selecionado == 'Comédia' }}>
+    <input type="radio" id="filtro-drama" name="genero" class="radio-filtro" {{ 'checked' if genero_selecionado == 'Drama' }}>
+    <input type="radio" id="filtro-ficcao" name="genero" class="radio-filtro" {{ 'checked' if genero_selecionado == 'Ficção Científica' }}>
+    <input type="radio" id="filtro-terror" name="genero" class="radio-filtro" {{ 'checked' if genero_selecionado == 'Terror' }}>
+    <input type="radio" id="filtro-suspense" name="genero" class="radio-filtro" {{ 'checked' if genero_selecionado == 'Suspense' }}>
+    
+    <div class="navbar">
+        <img src="/static/logo_katchuplay_texto.png" alt="Katchuplay Texto">
+        
+        <div class="filtro-container">
+            <details>
+                <summary class="botao-filtro">Filtre por gênero...</summary>
+                <div class="caixa-generos">
+                    <a href="{{ url_for('filmes_page') }}">Todos os Gêneros</a>
+                    <a href="{{ url_for('filmes_page', genero='Ação') }}" >Ação</a>
+                    <a href="{{ url_for('filmes_page', genero='Comédia') }}" >Comédia</a>
+                    <a href="{{ url_for('filmes_page', genero='Drama') }}" >Drama</a>
+                    <a href="{{ url_for('filmes_page', genero='Ficção Científica') }}" >Ficção Científica</a>
+                    <a href="{{ url_for('filmes_page', genero='Terror') }}" >Terror</a>
+                    <a href="{{ url_for('filmes_page', genero='Suspense') }}" >Suspense</a>
+                </div>
+            </details>
+        </div>
+
+        <div class="pages">
+            <ul>
+                <li><a href="/" class="{{ 'active' if request.path == '/' else '' }}">Início</a></li>
+                <li><a href="/filmes" class="{{ 'active' if request.path.startswith('/filmes') else '' }}">Filmes</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="secao-filmes secao-acao">
+        <h2>Ação</h2>
+        <div class="grade-filmes">
+            {% for filme in filmes %}
+                {% if filme.genero == 'Ação' %}
+                    <div class="card-filme" style="--url-imagem: url('{{ filme.imagem }}');">
+                        <div class="conteudo-card">
+                            <h3 class="titulo-filme">{{ filme.titulo }}</h3>
+                            <p class="info-filme">Lançamento: {{ filme.ano }}</p>
+                            <p class="info-filme">Classificação Indicativa: {{ filme.classificacao_indicativa }}</p>
+                            <p class="info-filme">Duração: {{ filme.duracao }}</p>
+                        </div>
+                        <a href="{{ url_for('editar', titulo=filme.titulo) }}" class="btn-editar">
+                            <i class="fa-solid fa-pen"></i> Editar
+                        </a>                
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="secao-filmes secao-comedia">
+        <h2>Comédia</h2>
+        <div class="grade-filmes">
+            {% for filme in filmes %}
+                {% if filme.genero == 'Comédia' %}
+                    <div class="card-filme" style="--url-imagem: url('{{ filme.imagem }}');">
+                        <div class="conteudo-card">
+                            <h3 class="titulo-filme">{{ filme.titulo }}</h3>
+                            <p class="info-filme">Lançamento: {{ filme.ano }}</p>
+                            <p class="info-filme">Classificação Indicativa: {{ filme.classificacao_indicativa }}</p>
+                            <p class="info-filme">Duração: {{ filme.duracao }}</p>
+                        </div>
+                        <a href="{{ url_for('editar', titulo=filme.titulo) }}" class="btn-editar">
+                            <i class="fa-solid fa-pen"></i> Editar
+                        </a>       
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="secao-filmes secao-drama">
+        <h2>Drama</h2>
+        <div class="grade-filmes">
+            {% for filme in filmes %}
+                {% if filme.genero == 'Drama' %}
+                    <div class="card-filme" style="--url-imagem: url('{{ filme.imagem }}');">
+                        <div class="conteudo-card">
+                            <h3 class="titulo-filme">{{ filme.titulo }}</h3>
+                            <p class="info-filme">Lançamento: {{ filme.ano }}</p>
+                            <p class="info-filme">Classificação Indicativa: {{ filme.classificacao_indicativa }}</p>
+                            <p class="info-filme">Duração: {{ filme.duracao }}</p>
+                        </div>
+                        <a href="{{ url_for('editar', titulo=filme.titulo) }}" class="btn-editar">
+                            <i class="fa-solid fa-pen"></i> Editar
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="secao-filmes secao-ficcao">
+        <h2>Ficção Científica</h2>
+        <div class="grade-filmes">
+            {% for filme in filmes %}
+                {% if filme.genero == 'Ficção Científica' %}
+                    <div class="card-filme" style="--url-imagem: url('{{ filme.imagem }}');">
+                        <div class="conteudo-card">
+                            <h3 class="titulo-filme">{{ filme.titulo }}</h3>
+                            <p class="info-filme">Lançamento: {{ filme.ano }}</p>
+                            <p class="info-filme">Classificação Indicativa: {{ filme.classificacao_indicativa }}</p>
+                            <p class="info-filme">Duração: {{ filme.duracao }}</p>
+                        </div>
+                        <a href="{{ url_for('editar', titulo=filme.titulo) }}" class="btn-editar">
+                            <i class="fa-solid fa-pen"></i> Editar
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="secao-filmes secao-terror">
+        <h2>Terror</h2>
+        <div class="grade-filmes">
+            {% for filme in filmes %}
+                {% if filme.genero == 'Terror' %}
+                    <div class="card-filme" style="--url-imagem: url('{{ filme.imagem }}');">
+                        <div class="conteudo-card">
+                            <h3 class="titulo-filme">{{ filme.titulo }}</h3>
+                            <p class="info-filme">Lançamento: {{ filme.ano }}</p>
+                            <p class="info-filme">Classificação Indicativa: {{ filme.classificacao_indicativa }}</p>
+                            <p class="info-filme">Duração: {{ filme.duracao }}</p>
+                        </div>
+                        <a href="{{ url_for('editar', titulo=filme.titulo) }}" class="btn-editar">
+                            <i class="fa-solid fa-pen"></i> Editar
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="secao-filmes secao-suspense">
+        <h2>Suspense</h2>
+        <div class="grade-filmes">
+            {% for filme in filmes %}
+                {% if filme.genero == 'Suspense' %}
+                    <div class="card-filme" style="--url-imagem: url('{{ filme.imagem }}');">
+                        <div class="conteudo-card">
+                            <h3 class="titulo-filme">{{ filme.titulo }}</h3>
+                            <p class="info-filme">Lançamento: {{ filme.ano }}</p>
+                            <p class="info-filme">Classificação Indicativa: {{ filme.classificacao_indicativa }}</p>
+                            <p class="info-filme">Duração: {{ filme.duracao }}</p>
+                        </div>
+                        <a href="{{ url_for('editar', titulo=filme.titulo) }}" class="btn-editar">
+                            <i class="fa-solid fa-pen"></i> Editar
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

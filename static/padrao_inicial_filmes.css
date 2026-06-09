@@ -1,0 +1,12 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff; /* Garante que o texto seja branco por padrão */
+}
+html {
+  /* Força a barra de rolagem vertical a ficar sempre visível (mesmo que desativada), impedindo o layout de tremer */
+  overflow-y: scroll;
+}

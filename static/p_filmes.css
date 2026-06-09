@@ -1,0 +1,264 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff; /* Garante que o texto seja branco por padrão */
+}
+html {
+  /* Força a barra de rolagem vertical a ficar sempre visível (mesmo que desativada), impedindo o layout de tremer */
+  overflow-y: scroll;
+}
+
+
+
+/* Navbar */
+.navbar {
+    background-color: #000;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;          /* Diz ao navegador para grudar exatamente no topo (0 pixels da borda superior) */
+    z-index: 1000;   /* Garante que a navbar vai flutuar POR CIMA dos filmes e imagens, e não por baixo */
+}
+/* Logo */
+.navbar img {
+    height: 50px;
+}
+.pages ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px; /* Cria um espaço fixo e seguro entre os links, impedindo que se atropelem */
+    align-items: center; /* Garante que todos fiquem perfeitamente alinhados no meio */
+}
+.pages ul li a {
+    text-decoration: none; /* Remove o sublinhado */
+    color: #ffffff;        /* Muda a cor para branco (ou a cor que preferir) */
+}
+.pages li {
+    margin-right: 20px;
+    cursor: pointer;
+}
+/* Estilo padrão do link (como ele fica antes do mouse passar) */
+.pages ul li a {
+    text-decoration: none;
+    font-size: 16px;
+    /* O segredo está aqui: o padding cria a caixinha ao redor do texto antes do fundo aparecer */
+    padding: 8px 16px; 
+    border-radius: 6px; /* Deixa as bordinhas arredondadas como na sua foto */
+    background-color: transparent; /* O fundo começa invisível */
+    transition: background-color 0.2s ease, color 0.2s ease; /* Transição suave */
+}
+
+/* O efeito ao passar o mouse */
+.pages ul li a:hover {
+    background-color: #8b0000; /* Seu vermelho escuro entra aqui de forma suave */
+}
+
+.pages ul li a.active {
+    background-color: #8b0000; /* O mesmo vermelho escuro do hover */
+    color: #ffffff;            /* Garante que o texto continue branco */
+}
+
+
+/* Filtro por gênero */
+/* Estilo do container principal */
+.filtro-container {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+}
+
+/* Remove a setinha padrão do <details> no Chrome/Safari/Firefox */
+.filtro-container summary::-webkit-details-marker {
+    display: none;
+}
+.filtro-container summary {
+    list-style: none;
+}
+
+/* O botão principal */
+.botao-filtro {
+    background-color: #7a0000; /* Vermelho escuro */
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 270px; /* Ajuste o tamanho padrão aqui */
+    text-align: left;
+    outline: none;
+    display: block;
+    transition: background 0.2s;
+}
+
+.botao-filtro:hover {
+    background-color: #990000; /* Feedback visual ao passar o mouse */
+}
+
+/* A caixa flutuante de opções */
+.caixa-generos {
+    position: absolute;
+    top: 100%; /* Fixa exatamente abaixo do botão */
+    left: 0;
+    width: 100%; /* Mesma largura do botão */
+    background-color: #1a1a1a; /* Fundo escuro */
+    margin-top: 6px;
+    border-radius: 6px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+    border: 1px solid #333333;
+    z-index: 2000; /* Garante que flutue sobre outros elementos */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* ESCONDER OS RADIOS PADRÃO */
+.radio-filtro {
+    display: none;
+}
+
+/* MUDANÇA AQUI: Ajustado para estilizar as tags <a> dos links novos que inserimos no HTML */
+.caixa-generos a {
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block; /* Faz cada gênero ocupar uma linha inteira */
+    text-align: left; /* Garante que o texto fique alinhado à esquerda */
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+    box-sizing: border-box;
+}
+
+.caixa-generos a:hover {
+    background-color: #7a0000;
+}
+
+/* AS SEÇÕES DE FILMES */
+.secao-filmes {
+    padding: 5px;
+    margin-inline: 30px;
+    border-radius: 8px;
+    font-size: larger;
+}
+
+/* Clicou -> Esconde todas as seções que estão após a navbar */
+#filtro-acao:checked ~ .secao-filmes,
+#filtro-comedia:checked ~ .secao-filmes,
+#filtro-terror:checked ~ .secao-filmes,
+#filtro-drama:checked ~ .secao-filmes,
+#filtro-ficcao:checked ~ .secao-filmes,
+#filtro-suspense:checked ~ .secao-filmes {
+    display: none !important;
+}
+/* Mostra apenas a seção correspondente */
+#filtro-acao:checked ~ .secao-acao,
+#filtro-comedia:checked ~ .secao-comedia,
+#filtro-terror:checked ~ .secao-terror,
+#filtro-drama:checked ~ .secao-drama,
+#filtro-ficcao:checked ~ .secao-ficcao,
+#filtro-suspense:checked ~ .secao-suspense {
+    display: block !important;
+}
+
+
+
+/* Configuração dos Títulos das Secções */
+.titulo-secao {
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 28px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+
+
+
+
+/* O SEGREDO DA ORGANIZAÇÃO AUTOMÁTICA (Grid) */
+.grade-filmes {
+    display: grid;
+    /* Cria colunas automáticas. Se a tela for grande, os cards ficam lado a lado automaticamente */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px; /* Espaço seguro entre os cards */
+    padding: 10px;
+    margin-bottom: 40px;
+}
+
+/* Estilo de cada Card */
+.card-filme {
+    height: 450px; /* Altura fixa para os cards ficarem todos simétricos */
+    background-size: cover;
+    background-position: center;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end; /* Empurra o texto para a base do card */
+    border: 1px solid #222;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+
+    /* Juntamos o degradê curtinho com a variável da imagem que vem lá do seu HTML */
+    background-image: 
+        linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 15%, rgba(0, 0, 0, 0) 35%), 
+        var(--url-imagem);
+}
+
+/* Efeito ao passar o mouse por cima do filme */
+.card-filme:hover {
+  transform: scale(1.03); /* Dá um leve zoom elegante */
+  border-color: #8b0000; /* Destaca a borda com o vermelho do Katchuplay */
+}
+
+/* Caixa de texto interna */
+.conteudo-card {
+    padding: 15px;
+    width: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Textos dentro do card */
+.titulo-filme {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 0 6px 0;
+}
+
+.info-filme {
+    color: #b3b3b3; /* Cor cinza clara para as informações secundárias */
+    font-size: 12px;
+    margin: 2px 0;
+}
+
+/* Botão de Edição */
+.btn-editar i {
+    color: white; /* Cor do ícone */
+    margin-right: 5px; /* Espaço entre o ícone e o texto "Editar" */
+}
+
+
+.btn-editar {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    background-color: #8b0000;
+    border-radius: 6px;
+    width: fit-content;
+    border: none;
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+    padding: 6px 12px;
+    border-radius: 4px;
+}
+
+.btn-editar:hover {
+    background-color: #f40612;
+    transition: background-color 0.2s;
+}

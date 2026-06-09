@@ -1,0 +1,189 @@
+[
+    {
+        "titulo": "Inception",
+        "ano": 2010,
+        "genero": "Ficção Científica",
+        "classificacao_indicativa": "12+",
+        "duracao": "2h28m",
+        "imagem": "/static/images/inception.jpg"
+    },
+    {
+        "titulo": "Mad Max: Estrada da Fúria",
+        "ano": "2015",
+        "genero": "Ação",
+        "classificacao_indicativa": "16+",
+        "duracao": "2h00m",
+        "imagem": "/static/images/mad_max.jpg",
+        "favorito": false
+    },
+    {
+        "titulo": "O Grande Lebowski",
+        "ano": 1998,
+        "genero": "Comédia",
+        "classificacao_indicativa": "14+",
+        "duracao": "1h57m",
+        "imagem": "/static/images/o_grande_lebowski.jpg"
+    },
+    {
+        "titulo": "O Poderoso Chefão",
+        "ano": 1972,
+        "genero": "Drama",
+        "classificacao_indicativa": "18+",
+        "duracao": "2h55m",
+        "imagem": "/static/images/o_poderoso_chefao.jpg"
+    },
+    {
+        "titulo": "O Exorcista",
+        "ano": 1973,
+        "genero": "Terror",
+        "classificacao_indicativa": "18+",
+        "duracao": "2h12m",
+        "imagem": "/static/images/o_exorcista.jpg"
+    },
+    {
+        "titulo": "Meu Malvado Favorito",
+        "ano": 2010,
+        "genero": "Comédia",
+        "classificacao_indicativa": "L",
+        "duracao": "1h35m",
+        "imagem": "/static/images/meu_malvado_favorito.jpg"
+    },
+    {
+        "titulo": "Interestelar",
+        "ano": 2014,
+        "genero": "Ficção Científica",
+        "classificacao_indicativa": "10+",
+        "duracao": "2h49m",
+        "imagem": "/static/images/interestelar.jpg"
+    },
+    {
+        "titulo": "John Wick",
+        "ano": "2014",
+        "genero": null,
+        "classificacao_indicativa": "18+",
+        "duracao": "1h41m",
+        "imagem": "/static/images/john_wick.jpg",
+        "favorito": false
+    },
+    {
+        "titulo": "O Diabo Veste Prada",
+        "ano": 2006,
+        "genero": "Comédia",
+        "classificacao_indicativa": "12+",
+        "duracao": "1h49m",
+        "imagem": "/static/images/o_diabo_veste_prada.jpg"
+    },
+    {
+        "titulo": "Forrest Gump",
+        "ano": 1994,
+        "genero": "Drama",
+        "classificacao_indicativa": "12+",
+        "duracao": "2h22m",
+        "imagem": "/static/images/forrest_gump.jpg"
+    },
+    {
+        "titulo": "It: A Coisa",
+        "ano": 2017,
+        "genero": "Terror",
+        "classificacao_indicativa": "16+",
+        "duracao": "2h15m",
+        "imagem": "/static/images/it_a_coisa.jpg"
+    },
+    {
+        "titulo": "O Silêncio dos Inocentes",
+        "ano": 1991,
+        "genero": "Suspense",
+        "classificacao_indicativa": "18+",
+        "duracao": "1h58m",
+        "imagem": "/static/images/o_silencio_dos_inocentes.jpg"
+    },
+    {
+        "titulo": "Gladiador",
+        "ano": "2000",
+        "genero": "Ação",
+        "classificacao_indicativa": "16+",
+        "duracao": "2h35m",
+        "imagem": "/static/images/gladiador.jpg",
+        "favorito": false
+    },
+    {
+        "titulo": "As Branquelas",
+        "ano": 2004,
+        "genero": "Comédia",
+        "classificacao_indicativa": "14+",
+        "duracao": "1h49m",
+        "imagem": "/static/images/as_branquelas.jpg"
+    },
+    {
+        "titulo": "Clube da Luta",
+        "ano": 1999,
+        "genero": "Drama",
+        "classificacao_indicativa": "18+",
+        "duracao": "2h19m",
+        "imagem": "/static/images/clube_da_luta.jpg"
+    },
+    {
+        "titulo": "O Massacre da Serra Elétrica",
+        "ano": 1974,
+        "genero": "Terror",
+        "classificacao_indicativa": "18+",
+        "duracao": "1h23m",
+        "imagem": "/static/images/o_massacre_da_serra_eletrica.jpg"
+    },
+    {
+        "titulo": "Corra!",
+        "ano": 2017,
+        "genero": "Suspense",
+        "classificacao_indicativa": "16+",
+        "duracao": "1h44m",
+        "imagem": "/static/images/corra.jpg"
+    },
+    {
+        "titulo": "Blade Runner 2049",
+        "ano": 2017,
+        "genero": "Ficção Científica",
+        "classificacao_indicativa": "16+",
+        "duracao": "2h44m",
+        "imagem": "/static/images/blade_runner_2049.jpg"
+    },
+    {
+        "titulo": "Vingadores: Ultimato",
+        "ano": 2019,
+        "genero": "Ação",
+        "classificacao_indicativa": "12+",
+        "duracao": "3h10m",
+        "imagem": "/static/images/vingadores_ultimato.jpg"
+    },
+    {
+        "titulo": "Superbad: É Hoje",
+        "ano": 2007,
+        "genero": "Comédia",
+        "classificacao_indicativa": "18+",
+        "duracao": "1h53m",
+        "imagem": "/static/images/superbad.jpg"
+    },
+    {
+        "titulo": "O Lobo de Wall Street",
+        "ano": 2013,
+        "genero": "Drama",
+        "classificacao_indicativa": "18+",
+        "duracao": "3h00m",
+        "imagem": "/static/images/o_lobo_de_wall_street.jpg"
+    },
+    {
+        "titulo": "A Bruxa de Blair",
+        "ano": 1999,
+        "genero": "Terror",
+        "classificacao_indicativa": "16+",
+        "duracao": "1h27m",
+        "imagem": "/static/images/a_bruxa_de_blair.jpg"
+    },
+    {
+        "titulo": "Garota Exemplar",
+        "ano": 2014,
+        "genero": "Suspense",
+        "classificacao_indicativa": "16+",
+        "duracao": "2h29m",
+        "imagem": "/static/images/garota_exemplar.jpg"
+    }
+]

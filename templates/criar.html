@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katchuplay - Adicionar Filme</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='editar_e_criar.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="navbar">
+        <img src="/static/logo_katchuplay_texto.png" alt="Katchuplay Texto">
+    </div>
+
+    <div class="conteudo-principal">
+        <div class="nome_pagina">
+            <h1>Adicionar Novo Filme</h1>
+            <a class="voltar" href="{{ url_for('p_inicial') }}">← Voltar</a>
+        </div>
+
+        <form class="container-edicao" action="{{ url_for('criar') }}" method="POST" enctype="multipart/form-data">
+            
+            <div class="coluna-imagem">
+                <h3>Adicionar Capa:</h3>
+                <input type="file" name="imagem" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="titulo" placeholder="Título do Filme" value="{{ filme.titulo if filme else '' }}" required>
+                    
+                <input type="number" name="ano" placeholder="Ano" value="{{ filme.ano if filme else '' }}" required>
+                
+                <select name="classificacao_indicativa" required>
+                    <option value="">Selecione a Classificação</option>
+                    <option value="L">Livre (L)</option>
+                    <option value="10+">10 anos</option>
+                    <option value="12+">12 anos</option>
+                    <option value="14+">14 anos</option>
+                    <option value="16+">16 anos</option>
+                    <option value="18+">18 anos</option>
+                </select>
+                
+                <input type="number" 
+                    name="duracao" 
+                    placeholder="Ex: 130 (para 1h30) ou 45 (para 45min)" 
+                    min="1" 
+                    value="{{ filme.duracao if filme else '' }}" 
+                    required>
+                
+                <select name="genero" required>
+                    <option value="">Selecione o Gênero</option>
+                    {% for g in generos %}
+                        <option value="{{ g }}" {{ 'selected' if filme and filme.genero == g else '' }}>{{ g }}</option>
+                    {% endfor %}
+                </select>
+
+                <button type="submit">Adicionar Filme</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

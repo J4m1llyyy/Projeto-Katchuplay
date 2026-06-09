@@ -1,0 +1,274 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #1a1a1a;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff; /* Garante que o texto seja branco por padrão */
+
+}
+
+html {
+  /* Força a barra de rolagem vertical a ficar sempre visível (mesmo que desativada), impedindo o layout de tremer */
+  overflow-y: scroll;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #000;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;          /* Diz ao navegador para grudar exatamente no topo (0 pixels da borda superior) */
+    z-index: 1000;   /* Garante que a navbar vai flutuar POR CIMA dos filmes e imagens, e não por baixo */
+}
+/* Logo */
+.navbar img {
+    height: 50px;
+}
+.pages ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px; /* Cria um espaço fixo e seguro entre os links, impedindo que se atropelem */
+    align-items: center; /* Garante que todos fiquem perfeitamente alinhados no meio */
+}
+.pages ul li a {
+    text-decoration: none; /* Remove o sublinhado */
+    color: #ffffff;        /* Muda a cor para branco */
+}
+.pages li {
+    margin-right: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+/* Estilo padrão do link (como ele fica antes do mouse passar) */
+.pages ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 16px;
+    /* O segredo está aqui: o padding cria a caixinha ao redor do texto antes do fundo aparecer */
+    padding: 8px 16px; 
+    border-radius: 6px; /* Deixa as bordinhas arredondadas como na sua foto */
+    background-color: transparent; /* O fundo começa invisível */
+    transition: background-color 0.2s ease, color 0.2s ease; /* Transição suave */
+}
+
+/* O efeito ao passar o mouse */
+.pages ul li a:hover {
+    background-color: #8b0000; /* Seu vermelho escuro entra aqui de forma suave */
+    color: #ffffff; /* Garante que o texto continue branco e legível */
+}
+
+.pages ul li a.active {
+    background-color: #8b0000; /* O mesmo vermelho escuro do hover */
+    color: #ffffff;            /* Garante que o texto continue branco */
+}
+
+
+
+/* Filtro por gênero */
+/* Estilo do container principal */
+.filtro-container {
+    position: relative;
+    display: inline-block;
+    font-family: Arial, sans-serif;
+}
+
+/* Remove a setinha padrão do <details> no Chrome/Safari/Firefox */
+.filtro-container summary::-webkit-details-marker {
+    display: none;
+}
+.filtro-container summary {
+    list-style: none;
+}
+
+/* O botão principal */
+.botao-filtro {
+    background-color: #7a0000; /* Vermelho escuro */
+    color: #ffffff;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 270px; /* Ajuste o tamanho padrão aqui */
+    text-align: left;
+    outline: none;
+    display: block;
+    transition: background 0.2s;
+}
+
+.botao-filtro:hover {
+    background-color: #990000; /* Feedback visual ao passar o mouse */
+}
+
+/* A caixa flutuante de opções */
+.caixa-generos {
+    position: absolute;
+    top: 100%; /* Fixa exatamente abaixo do botão */
+    left: 0;
+    width: 100%; /* Mesma largura do botão */
+    background-color: #1a1a1a; /* Fundo escuro */
+    margin-top: 6px;
+    border-radius: 6px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.6);
+    border: 1px solid #333333;
+    z-index: 2000; /* Força os gêneros a ficarem na frente do slider de filmes */
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+/* ESCONDER OS RADIOS PADRÃO */
+.radio-filtro {
+    display: none;
+}
+
+/* Estilo de cada opção/link */
+.caixa-generos a {
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block; /* Faz cada gênero ocupar uma linha inteira */
+    text-align: left; /* Garante que o texto fique alinhado à esquerda */
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+    box-sizing: border-box;
+}
+
+/* Efeito hover nos Links da Caixa Flutuante */
+.caixa-generos a:hover {
+    background-color: #7a0000;
+    color: #ffffff;
+}
+
+/* AS SEÇÕES DE FILMES */
+.secao-filmes {
+    padding: 5px;
+    margin-inline: 30px;
+    border-radius: 8px;
+    font-size: larger;
+}
+
+/* Formulário de Edição */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+form input[type="text"],
+form input[type="file"] {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+}
+
+form button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #8b0000;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+form button:hover {
+    color: yellow;
+}
+
+.voltar {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    background-color: #8b0000;
+    padding: 8px 12px;
+    transition: color 0.2s ease;
+}
+
+.voltar:hover {
+    color: yellow;
+}
+
+
+
+/* Container Principal */
+.conteudo-principal {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+/* Tipografia */
+h1 {
+    font-size: 3rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #ffffff;
+    margin-bottom: 30px;
+    border-left: 4px solid #e50914; /* Vermelho marca */
+    padding-left: 15px;
+}
+
+p { font-size: 1.2rem; color: #b3b3b3; margin-bottom: 40px; }
+
+/* Grid de Funcionalidades */
+.funcionalidades {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.item {
+    background: #181818;
+    padding: 30px;
+    border-radius: 8px;
+    border: 1px solid #333;
+    transition: all 0.3s ease;
+}
+
+.item:hover {
+    background: #252525;
+    transform: translateY(-10px);
+}
+
+.item strong {
+    color: #e50914;
+    font-size: 1.3rem;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Botão de Ação */
+.btn-criar {
+    display: inline-block;
+    background-color: #e50914;
+    color: white;
+    padding: 18px 40px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.btn-criar:hover {
+    background-color: #f40612;
+    transition: background-color 0.2s;
+}
