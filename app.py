@@ -4,6 +4,7 @@ import os
 from werkzeug.utils import secure_filename
 from datetime import datetime
 
+# póiuhghfsjautyu464a6 jm45 mu654 m5 m5u656u5 55 
 app = Flask(__name__)
 
 # Configuração dos caminhos dos arquivos JSON
